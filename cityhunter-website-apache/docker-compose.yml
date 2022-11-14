@@ -1,0 +1,9 @@
+version: '3.8'
+services:
+  city-site-apache2:
+    image: cityhunterxx/cityhuntersite:apache2
+    container_name: city-compose2
+    ports:
+      - 8084:80
+    environment:
+      - TZ=UTC 

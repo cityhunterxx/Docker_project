@@ -1,0 +1,9 @@
+version: '3.8'
+services:
+  city-site:
+    build: .
+    image: cityhuntexx/cityhuntersite:python
+    container_name: siteweb-python
+    ports:
+      - 8044:8000
+  

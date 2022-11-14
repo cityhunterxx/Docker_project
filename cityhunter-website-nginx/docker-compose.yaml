@@ -1,0 +1,12 @@
+#--name nginx-container -v /home/cithunter/Training/Docker/cityhunter-website-nginx/site:/var/www/html  -e TZ=UTC -p 8086:80 ubuntu/nginx:1.18-22.04_beta
+
+version: '3.8'
+services:
+  city-site:
+    image: cityhunterxx/cityhuntersite:nginx
+    container_name: city-compose
+    ports:
+      - 8086:80
+    environment:
+      - TZ=UTC 
+    

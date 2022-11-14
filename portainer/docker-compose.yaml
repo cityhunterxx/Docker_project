@@ -1,0 +1,20 @@
+#docker run -d -p 8000:8000 -p 9443:9443 --name portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:latest
+#docker volume create portainer_data
+
+version: '3.8'
+services:
+  portainer:
+    image: portainer/portainer-ce:latest
+    container_name: portainer-ct
+    ports:
+      - 9443:9443
+    restart: always 
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - portainer_data:/data
+
+
+volumes:
+  portainer_data:
+    driver: local
+    
