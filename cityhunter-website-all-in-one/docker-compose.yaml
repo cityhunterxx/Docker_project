@@ -3,9 +3,12 @@ services:
   city-site-python:
     build: .
     image: ${BASE_IMAGE}:python
-    container_name: city-compose0
-    ports:
-      - 8080:80
+   # container_name: city-compose0
+    restart: always
+    deploy:
+      replicas: 2
+    #ports:
+    # - 8080:80
   city-site-nginx:
     image: ${BASE_IMAGE}:nginx
     container_name: city-compose1

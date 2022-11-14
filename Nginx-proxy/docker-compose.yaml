@@ -1,0 +1,11 @@
+version: '3.8'
+services:
+  nginx-proxy:
+    image: jwilder/nginx-proxy
+    container_name: proxy-container
+    ports:
+      - 80:80
+    restart: always 
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock
+  
