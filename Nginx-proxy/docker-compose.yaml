@@ -1,11 +1,17 @@
 version: '3.8'
 services:
   nginx-proxy:
-    image: jwilder/nginx-proxy
+    image: jwilder/nginx-proxy:1.0.1-alpine
     container_name: proxy-container
     ports:
       - 80:80
     restart: always 
     volumes:
       - /var/run/docker.sock:/tmp/docker.sock
+    networks:
+      - proxy_nt
+
+networks:
+  proxy_nt:
+    name: proxy_nt
   

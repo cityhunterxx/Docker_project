@@ -6,21 +6,41 @@ services:
    # container_name: city-compose0
     restart: always
     deploy:
-      replicas: 2
+      replicas: 1
     #ports:
     # - 8080:80
+    networks:
+      - proxy_nt
+    environment:
+      - VIRTUAL_PORT=80
+      - VIRTUAL_HOST=city-compose0.city.local
   city-site-nginx:
     image: ${BASE_IMAGE}:nginx
     container_name: city-compose1
-    ports:
-      - 8082:80
+    #ports:
+    # - 8082:80
+    networks:
+      - proxy_nt
     environment:
+      - VIRTUAL_HOST=city-compose1.city.local
+      - VIRTUAL_PORT=80
       - TZ=UTC 
   city-site-apache2:
     image: ${BASE_IMAGE}:apache2
     container_name: city-compose2
-    ports:
-      - 8084:80
+    #ports:
+    # - 8084:80
+    #They are replaced by the nginx proxy ;)
+    networks:
+      - proxy_nt
     environment:
+      - VIRTUAL_HOST=city-compose2.city.local
+      - VIRTUAL_PORT=80
       - TZ=UTC 
+
+
+networks:
+  proxy_nt:
+    external: true
+
   

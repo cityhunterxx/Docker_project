@@ -1,0 +1,37 @@
+#docker run -d --restart=always -p 3001:3001 -v uptime-kuma:/app/data --name uptime-kuma louislam/uptime-kuma:1
+version: '3.8'
+services:
+  uptime:
+    image: louislam/uptime-kuma:1.18.5-alpine
+    container_name: uptime_kuma
+    volumes:
+      - ./uptime-kuma:/app/data
+    #ports:
+    # - 8080:3001
+    environment:
+      - VIRTUAL_HOST=uptime-kuma.city.local
+      - VIRTUAL_PORT=3001
+      - TZ=UTC 
+    networks:
+      - proxy_nt
+        
+    
+
+networks:
+  proxy_nt:
+    external: true
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

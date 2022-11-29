@@ -6,15 +6,33 @@ services:
   portainer:
     image: portainer/portainer-ce:latest
     container_name: portainer-ct
-    ports:
-      - 9443:9443
+    #ports:
+      #- 9443:9443
     restart: always 
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - portainer_data:/data
-
+      #./xxxxxx will create a file that'll store the C data on it
+    networks:
+      - nt_portainer
+      - proxy_nt
+      #- nt_vm
+    environment:
+      - VIRTUAL_HOST=portainer.city.local
+      - VIRTUAL_PORT=9443
+      - VIRTUAL_PROTO=HTTPS
+      - TZ=UTC 
 
 volumes:
   portainer_data:
+    name: portainer_data
     driver: local
+
+networks:
+  nt_portainer:
+    name: nt_portainer
+
+  proxy_nt:
+    external: true
+
     

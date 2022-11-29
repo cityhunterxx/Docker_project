@@ -1,0 +1,25 @@
+#docker run -d --name=grafana -p 3000:3000 grafana/grafana
+#docker pull grafana/grafana:9.2.6-ubuntu
+
+version: '3.8'
+services:
+  grafana:
+    image: grafana/grafana:9.2.6-ubuntu
+    container_name: grafana_ct
+    #volumes:
+     # - ./uptime-kuma:/app/data
+    #for the moment eliminated to be checked
+    #ports:
+    # - 8080:3000
+    environment:
+      - VIRTUAL_HOST=grafana.city.local
+      - VIRTUAL_PORT=3000
+      - TZ=UTC 
+    networks:
+      - proxy_nt
+        
+    
+
+networks:
+  proxy_nt:
+    external: true
