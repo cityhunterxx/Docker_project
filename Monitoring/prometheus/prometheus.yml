@@ -1,0 +1,17 @@
+#global:
+  #scrape_interval: 1m
+  # "Optional"
+  
+scrape_configs:
+- job_name: cadvisor
+  scrape_interval: 5s
+  static_configs:
+  - targets:
+    - cadvisor_ct:8080
+#containers call themselves by their names ;) 
+
+- job_name: "node"
+  scrape_interval: 5s
+  static_configs:
+  - targets: 
+    - "node-exporter:9100"

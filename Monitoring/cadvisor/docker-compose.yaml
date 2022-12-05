@@ -1,0 +1,25 @@
+
+version: '3.8'
+services:
+  cadvisor:
+    image: gcr.io/cadvisor/cadvisor:latest
+    container_name: cadvisor_ct
+    #ports:
+    #- 8080:8080
+    volumes:
+    - /:/rootfs:ro
+    - /var/run:/var/run:rw
+    - /sys:/sys:ro
+    - /var/lib/docker/:/var/lib/docker:ro
+    environment:
+      - VIRTUAL_HOST=cadvisor.city.local
+      - VIRTUAL_PORT=8080
+      - TZ=UTC 
+    networks:
+      - proxy_nt
+        
+    
+networks:
+  proxy_nt:
+    external: true
+ 
