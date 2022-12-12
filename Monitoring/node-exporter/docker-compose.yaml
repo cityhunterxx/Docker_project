@@ -17,7 +17,7 @@ services:
     # - 9100
     environment:
       - VIRTUAL_HOST=node-exporter.city.local
-      - VIRTUAL_PORT=8080
+      - VIRTUAL_PORT=9100
       - TZ=UTC 
     networks:
       - proxy_nt

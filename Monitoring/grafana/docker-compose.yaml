@@ -6,7 +6,9 @@ services:
   grafana:
     image: grafana/grafana:9.2.6-ubuntu
     container_name: grafana_ct
-    #volumes:
+    volumes:
+      - grafana_data:/var/lib/grafana
+      - ./grafana/provisioning/:/etc/grafana/provisioning/
      # - ./uptime-kuma:/app/data
     #for the moment eliminated to be checked
     #ports:
@@ -15,11 +17,19 @@ services:
       - VIRTUAL_HOST=grafana.city.local
       - VIRTUAL_PORT=3000
       - TZ=UTC 
+      - GF_SECURITY_ADMIN_USER=${GRAFANA_ACCOUNT_USERNAME:-admin}
+      - GF_SECURITY_ADMIN_PASSWORD=${GRAFANA_ACCOUNT_PASS:-admin}
+    #PASSWORD: "${PASSWORD:-admin}" Another method to declare variables 
+      
     networks:
       - proxy_nt
         
-    
 
+
+volumes:
+  grafana_data:
+    name: grafana_data
+    driver: local
 networks:
   proxy_nt:
     external: true
