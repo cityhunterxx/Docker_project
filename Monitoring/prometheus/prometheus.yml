@@ -14,4 +14,40 @@ scrape_configs:
   scrape_interval: 5s
   static_configs:
   - targets: 
-    - "node-exporter:9100"
+    - "node-exporter_ct:9100"
+
+- job_name: "blackbox"
+  metrics_path: /probe #by default
+  params:
+    module: [http_2xx] # Look for a HTTP 200 response. What module are we using
+  static_configs:
+    - targets:
+        - https://udemy.com/
+      labels:
+        server: "udemy"
+    - targets:
+        - https://twitter.com/
+      labels:
+        server: "twitter"
+    - targets:
+        - "https://mooc.savoirguinee.com/"
+      labels:
+        server: "savoir-guinee"
+    - targets:
+        - "https://cityhunterxx.github.io"
+      labels:
+        server: "cityhunter_website"
+    - targets:
+        - https://yahoo.com/
+      labels:
+        server: "Yahoo"
+
+  relabel_configs:
+    - source_labels: [__address__]
+      target_label: __param_target
+    - source_labels: [__param_target]
+      target_label: instance
+    - target_label: __address__
+      replacement: blackbox_ct:9115 
+#use contaner name sincee i'm using nginx proxy 
+#If i wanted nom du service il faut qu'il soient dans le mem reseau/docker compose

@@ -1,0 +1,18 @@
+apiVersion: 1
+
+providers:
+ - name: 'App-dashboard'
+   folder: 'Applications'
+  #  type: file
+   allowUiUpdates: false
+   updateIntervalSeconds: 60
+   options:
+     path: /etc/grafana/provisioning/dashboards/applications
+
+ - name: 'Sys-dashboard'
+   folder: 'Systems'
+  #  type: file
+   allowUiUpdates: false
+   updateIntervalSeconds: 60
+   options:
+     path: /etc/grafana/provisioning/dashboards/systems

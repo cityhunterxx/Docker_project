@@ -1,0 +1,20 @@
+version: '3.8'
+services:
+  prometheus-blackbox:
+    image: prom/blackbox-exporter
+    container_name: blackbox_ct
+    volumes:
+      - ./config.yml:/etc/blackbox_exporter/config.yml
+    environment:
+      - VIRTUAL_HOST=blackbox.city.local
+      - VIRTUAL_PORT=9115
+      - TZ=UTC 
+    networks:
+      - proxy_nt
+    restart: unless-stopped
+        
+    
+networks:
+  proxy_nt:
+    external: true
+ 
