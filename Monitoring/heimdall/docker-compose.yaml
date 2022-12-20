@@ -2,7 +2,7 @@ version: "3.8"
 services:
   heimdall:
     image: lscr.io/linuxserver/heimdall:2.5.3
-    #container_name: heimdall
+    container_name: heimdall_ct
     environment:
       - PUID=1000
       - PGID=1000

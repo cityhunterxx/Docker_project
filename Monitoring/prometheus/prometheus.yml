@@ -21,18 +21,32 @@ scrape_configs:
   params:
     module: [http_2xx] # Look for a HTTP 200 response. What module are we using
   static_configs:
+
+    - targets:
+        - "heimdall_ct:80"
+      labels:
+        server: "heimdal"
+
     - targets:
         - https://udemy.com/
       labels:
         server: "udemy"
+
+    - targets:
+        - https://udemy.com/
+      labels:
+        server: "udemy"
+
     - targets:
         - https://twitter.com/
       labels:
         server: "twitter"
+
     - targets:
         - "https://mooc.savoirguinee.com/"
       labels:
         server: "savoir-guinee"
+
     - targets:
         - "https://cityhunterxx.github.io"
       labels:

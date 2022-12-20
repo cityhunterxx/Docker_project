@@ -1,0 +1,101 @@
+{
+    "id": 2,
+    "gridPos": {
+      "h": 2,
+      "w": 4,
+      "x": 0,
+      "y": 9
+    },
+    "type": "stat",
+    "title": "Status",
+    "repeatDirection": "v",
+    "datasource": {
+      "type": "prometheus",
+      "uid": "P6B77217ED9FFF586"
+    },
+    "pluginVersion": "9.2.6",
+    "maxDataPoints": 100,
+    "links": [],
+    "fieldConfig": {
+      "defaults": {
+        "mappings": [
+          {
+            "options": {
+              "0": {
+                "text": "DOWN"
+              },
+              "1": {
+                "text": "UP"
+              }
+            },
+            "type": "value"
+          },
+          {
+            "options": {
+              "match": "null",
+              "result": {
+                "text": "N/A"
+              }
+            },
+            "type": "special"
+          }
+        ],
+        "thresholds": {
+          "mode": "absolute",
+          "steps": [
+            {
+              "color": "#d44a3a",
+              "value": null
+            },
+            {
+              "color": "rgba(237, 129, 40, 0.89)",
+              "value": 1
+            },
+            {
+              "color": "#299c46",
+              "value": 1
+            }
+          ]
+        },
+        "color": {
+          "mode": "thresholds"
+        },
+        "unit": "none"
+      },
+      "overrides": []
+    },
+    "options": {
+      "reduceOptions": {
+        "values": false,
+        "calcs": [
+          "lastNotNull"
+        ],
+        "fields": ""
+      },
+      "orientation": "horizontal",
+      "textMode": "auto",
+      "colorMode": "background",
+      "graphMode": "none",
+      "justifyMode": "auto"
+    },
+    "targets": [
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "P6B77217ED9FFF586"
+        },
+        "expr": "probe_success{instance=~\"$target\"}",
+        "format": "time_series",
+        "interval": "$interval",
+        "intervalFactor": 1,
+        "refId": "A"
+      }
+    ],
+    "scopedVars": {
+      "target": {
+        "text": "heimdall_ct:80",
+        "value": "heimdall_ct:80",
+        "selected": false
+      }
+    }
+  }
