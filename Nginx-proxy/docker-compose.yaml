@@ -1,17 +1,37 @@
 version: '3.8'
-services:
-  nginx-proxy:
-    image: jwilder/nginx-proxy:1.0.1-alpine
-    container_name: proxy-container
-    ports:
-      - 80:80
-    restart: always 
-    volumes:
-      - /var/run/docker.sock:/tmp/docker.sock
-    networks:
-      - proxy_nt
 
 networks:
   proxy_nt:
     name: proxy_nt
-  
+
+services:
+  proxy:
+    image: jwilder/nginx-proxy:alpine
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - nginx-certs:/etc/nginx/certs
+      - nginx-vhost:/etc/nginx/vhost.d
+      - nginx-html:/usr/share/nginx/html
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+    networks:
+      - default
+      - proxy_nt
+
+  nginx-letsencrypt:
+    image: jrcs/letsencrypt-nginx-proxy-companion
+    container_name: nginx-letsencrypt
+    restart: always
+    volumes_from:
+      - proxy
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    environment:
+      - DEFAULT_EMAIL=chatti.khalil31@gmail.com
+
+volumes:
+  nginx-certs:
+  nginx-vhost:
+  nginx-html:
