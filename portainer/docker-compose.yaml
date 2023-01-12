@@ -18,7 +18,8 @@ services:
       - proxy_nt
       #- nt_vm
     environment:
-      - VIRTUAL_HOST=portainer.city.local
+      # - VIRTUAL_HOST=portainer.city.local
+      - VIRTUAL_HOST=portainer.devops-hunter.com
       - VIRTUAL_PORT=9443
       - VIRTUAL_PROTO=HTTPS
       - TZ=UTC 

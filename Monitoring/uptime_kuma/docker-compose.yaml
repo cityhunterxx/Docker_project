@@ -9,7 +9,8 @@ services:
     #ports:
     # - 8080:3001
     environment:
-      - VIRTUAL_HOST=uptime-kuma.city.local
+      # - VIRTUAL_HOST=uptime-kuma.city.local
+      - VIRTUAL_HOST=uptime-kuma.devops-hunter.com
       - VIRTUAL_PORT=3001
       - TZ=UTC 
     networks:

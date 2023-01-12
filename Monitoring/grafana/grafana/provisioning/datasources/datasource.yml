@@ -2,8 +2,9 @@ apiVersion: 1
 
 deleteDatasources:
   - name: Prometheus-cityhunter
-    orgId: 1 #par précaution : it should be kept for a year even though we know it is deleted (other laptops can be asleep in the meanwhile)
-  - name: Prometheus-cityhunter-1
+    orgId: 1 #par précaution : it should be kept for a year even though we know it is deleted (other laptops can be asleep in the meanwhile) 
+              #If Configuration have changed in the meanwhile
+  - name: Prometheus-cityhunter-1 
     orgId: 1
   - name: Prometheus-cityhunter-2
     orgId: 1

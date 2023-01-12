@@ -12,7 +12,8 @@ services:
     - /sys:/sys:ro
     - /var/lib/docker/:/var/lib/docker:ro
     environment:
-      - VIRTUAL_HOST=cadvisor.city.local
+      # - VIRTUAL_HOST=cadvisor.city.local
+      - VIRTUAL_HOST=cadvisor.devops-hunter.com
       - VIRTUAL_PORT=8080
       - TZ=UTC 
     networks:

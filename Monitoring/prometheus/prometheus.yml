@@ -23,7 +23,7 @@ scrape_configs:
   static_configs:
 
     - targets:
-        - "heimdall_ct:80"
+        - "http://heimdall_ct" #no port cause it's http =~80
       labels:
         server: "heimdal"
 

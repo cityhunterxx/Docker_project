@@ -16,7 +16,8 @@ services:
     # expose:
     # - 9100
     environment:
-      - VIRTUAL_HOST=node-exporter.city.local
+      # - VIRTUAL_HOST=node-exporter.city.local
+      - VIRTUAL_HOST=node-exporter.devops-hunter.com
       - VIRTUAL_PORT=9100
       - TZ=UTC 
     networks:
