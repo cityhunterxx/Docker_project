@@ -17,6 +17,7 @@ services:
       # - VIRTUAL_HOST=grafana.city.local
       - VIRTUAL_HOST=grafana.devops-hunter.com
       - VIRTUAL_PORT=3000
+      - LETSENCRYPT_HOST=grafana.devops-hunter.com
       - TZ=UTC 
       - GF_SECURITY_ADMIN_USER=${GRAFANA_ACCOUNT_USERNAME:-admin}
       - GF_SECURITY_ADMIN_PASSWORD=${GRAFANA_ACCOUNT_PASS:-admin}
