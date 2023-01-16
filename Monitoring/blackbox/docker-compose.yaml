@@ -8,6 +8,8 @@ services:
     environment:
       # - VIRTUAL_HOST=blackbox.city.local
       - VIRTUAL_HOST=blackbox.devops-hunter.com
+      - LETSENCRYPT_HOST=blackbox.devops-hunter.com
+      - LETSENCRYPT_EMAIL=chatti.khalil31@gmail.com
       - VIRTUAL_PORT=9115
       - TZ=UTC 
     networks:

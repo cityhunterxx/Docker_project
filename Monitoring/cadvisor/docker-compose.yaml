@@ -14,6 +14,8 @@ services:
     environment:
       # - VIRTUAL_HOST=cadvisor.city.local
       - VIRTUAL_HOST=cadvisor.devops-hunter.com
+      - LETSENCRYPT_HOST=cadvisor.devops-hunter.com
+      - LETSENCRYPT_EMAIL=chatti.khalil31@gmail.com
       - VIRTUAL_PORT=8080
       - TZ=UTC 
     networks:
