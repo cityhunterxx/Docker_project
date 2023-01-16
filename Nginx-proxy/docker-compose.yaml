@@ -3,7 +3,7 @@ version: '3.8'
 networks:
   proxy_nt:
     name: proxy_nt
-
+#Docker Nginx proxy companion
 services:
   proxy:
     image: jwilder/nginx-proxy:alpine

@@ -27,8 +27,6 @@ services:
     networks:
       - proxy_nt
         
-
-
 volumes:
   grafana_data:
     name: grafana_data
