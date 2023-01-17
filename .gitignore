@@ -1,8 +1,6 @@
 Monitoring/uptime_kuma/uptime-kuma
 Monitoring/heimdall/appdata_config
 Monitoring/grafana/.env
-Monitoring/grafana/grafana/provisioning
-Monitoring/grafana/grafana
 Monitoring/uptime_kuma/uptime-kuma
 
 
