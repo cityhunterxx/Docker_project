@@ -5,13 +5,9 @@ services:
     container_name: blackbox_ct
     volumes:
       - ./config.yml:/etc/blackbox_exporter/config.yml
-    environment:
-      # - VIRTUAL_HOST=blackbox.city.local
-      - VIRTUAL_HOST=blackbox.devops-hunter.com
-      - LETSENCRYPT_HOST=blackbox.devops-hunter.com
-      - LETSENCRYPT_EMAIL=chatti.khalil31@gmail.com
-      - VIRTUAL_PORT=9115
-      - TZ=UTC 
+    env_file:
+      - file${ENV}.env
+
     networks:
       - proxy_nt
     restart: unless-stopped
