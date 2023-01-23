@@ -15,13 +15,9 @@ services:
       - '--collector.filesystem.mount-points-exclude=^/(sys|proc|dev|host|etc)($$|/)'
     # expose:
     # - 9100
-    environment:
-      # - VIRTUAL_HOST=node-exporter.city.local
-      - VIRTUAL_HOST=node-exporter.devops-hunter.com
-      - LETSENCRYPT_HOST=node-exporter.devops-hunter.com
-      - LETSENCRYPT_EMAIL=chatti.khalil31@gmail.com
-      - VIRTUAL_PORT=9100
-      - TZ=UTC 
+    env_file:
+      - file{ENV}.env
+
     networks:
       - proxy_nt
         

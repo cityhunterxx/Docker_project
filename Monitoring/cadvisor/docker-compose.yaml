@@ -11,13 +11,9 @@ services:
     - /var/run:/var/run:rw
     - /sys:/sys:ro
     - /var/lib/docker/:/var/lib/docker:ro
-    environment:
-      # - VIRTUAL_HOST=cadvisor.city.local
-      - VIRTUAL_HOST=cadvisor.devops-hunter.com
-      - LETSENCRYPT_HOST=cadvisor.devops-hunter.com
-      - LETSENCRYPT_EMAIL=chatti.khalil31@gmail.com
-      - VIRTUAL_PORT=8080
-      - TZ=UTC 
+    env_file:
+      - file${ENV}.env
+      
     networks:
       - proxy_nt
         

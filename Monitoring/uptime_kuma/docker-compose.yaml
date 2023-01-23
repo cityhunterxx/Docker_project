@@ -8,13 +8,9 @@ services:
       - ./uptime-kuma:/app/data
     #ports:
     # - 8080:3001
-    environment:
-      # - VIRTUAL_HOST=uptime-kuma.city.local
-      - VIRTUAL_HOST=uptime-kuma.devops-hunter.com
-      - LETSENCRYPT_HOST=uptime-kuma.devops-hunter.com
-      - LETSENCRYPT_EMAIL=chatti.khalil31@gmail.com
-      - VIRTUAL_PORT=3001
-      - TZ=UTC 
+    env_file:
+      - file-${ENV}.env
+
     networks:
       - proxy_nt
         

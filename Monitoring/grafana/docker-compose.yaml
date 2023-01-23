@@ -13,16 +13,9 @@ services:
     #for the moment eliminated to be checked
     #ports:
     # - 8080:3000
-    environment:
-      # - VIRTUAL_HOST=grafana.city.local
-      - VIRTUAL_HOST=grafana.devops-hunter.com
-      - LETSENCRYPT_HOST=grafana.devops-hunter.com
-      - LETSENCRYPT_EMAIL=chatti.khalil31@gmail.com
-      - VIRTUAL_PORT=3000
-      - TZ=UTC 
-      - GF_SECURITY_ADMIN_USER=${GRAFANA_ACCOUNT_USERNAME:-admin} # If Var doe not exist he wil put admin etc ..
-      - GF_SECURITY_ADMIN_PASSWORD=${GRAFANA_ACCOUNT_PASS:-admin}
-    #PASSWORD: "${PASSWORD:-admin}" Another method to declare variables 
+    env_file:
+      - file${ENV}.env
+
       
     networks:
       - proxy_nt
