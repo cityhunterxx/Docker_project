@@ -16,7 +16,7 @@ services:
     # expose:
     # - 9100
     env_file:
-      - file{ENV}.env
+      - file-${ENV}.env
 
     networks:
       - proxy_nt
