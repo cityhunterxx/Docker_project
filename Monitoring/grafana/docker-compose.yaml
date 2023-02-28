@@ -11,8 +11,8 @@ services:
       - ./grafana/provisioning/:/etc/grafana/provisioning/
      # - ./uptime-kuma:/app/data
     #for the moment eliminated to be checked
-    #ports:
-    # - 8080:3000
+    ports:
+     - 3000:3000
     env_file:
       - file${ENV}.env
 

@@ -12,7 +12,7 @@ services:
     - /sys:/sys:ro
     - /var/lib/docker/:/var/lib/docker:ro
     env_file:
-      - file${ENV}.env
+      - file-prod.env
       
     networks:
       - proxy_nt
