@@ -13,6 +13,20 @@ services:
 
     networks:
       - proxy_nt
+
+    labels:
+      # enable traefik
+      - "traefik.enable=true"
+      # router
+      - "traefik.http.routers.${ROUTEUR_NAME}.rule=Host(`${HOST_NAME}`)"
+      - "traefik.http.routers.${ROUTEUR_NAME}.entrypoints=websecure"
+      - "traefik.http.routers.${ROUTEUR_NAME}.service=${SERVICE_NAME}"
+      # certificate SSL HTTPS
+      - traefik.http.routers.${ROUTEUR_NAME}.tls=true
+      - traefik.http.routers.${ROUTEUR_NAME}.tls.certresolver=lets-encrypt
+      # service
+      - traefik.http.services.${SERVICE_NAME}.loadbalancer.server.port=${CONTAINER_PORT}
+      - traefik.http.services.${SERVICE_NAME}.loadbalancer.server.scheme=http
         
     
 
